@@ -13,7 +13,7 @@ public:
             return false;
         }
         else {
-            value1 = get_number1();
+            value1 = num1;
             return true;
         }
     }
@@ -23,28 +23,28 @@ public:
             return false;
         }
         else {
-            value2 = get_number2();
+            value2 = num2;
             return true;
         }
     }
 
-    double add() {
-        return get_number1() + get_number2();
+    double add( ) {
+        return num1 + num2;
     }
     double subtract1_2() {
-        return get_number1() - get_number2();
+        return num1 - num2;
     }
     double subtract2_1() {
-        return get_number1() - get_number2();
+        return num1 - num2;
     }
     double multiply() {
-        return get_number1() * get_number2();
+        return num1 * num2;
     }
     double divide1_2() {
-        return get_number1() / get_number2();
+        return num1 / num2;
     }
     double divide2_1() {
-        return get_number1() / get_number2();
+        return num1 / num2;
     }
 };
 
