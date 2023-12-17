@@ -1,67 +1,81 @@
 ﻿#include <iostream>
 
 class calculator {
+private:
+    double num1 = 0 ; double num2 = 0;
 public:
-    double num1 = 0, num2 = 0;
-    
+  
+    double get_number1() { return num1; }
+    double get_number2() { return num2; }
+
+    bool set_n1(double value1) {
+        if (value1 == 0) {
+            return false;
+        }
+        else {
+            value1 = get_number1();
+            return true;
+        }
+    }
+
+    bool set_n2(double value2) {
+        if (value2 == 0) {
+            return false;
+        }
+        else {
+            value2 = get_number2();
+            return true;
+        }
+    }
+
     double add() {
-        return num1 + num2;
+        return get_number1() + get_number2();
     }
     double subtract1_2() {
-        return num1 - num2;
+        return get_number1() - get_number2();
     }
     double subtract2_1() {
-        return num2 - num1;
+        return get_number1() - get_number2();
     }
     double multiply() {
-        return num1 * num2;
+        return get_number1() * get_number2();
     }
     double divide1_2() {
-        return num1 / num2;
+        return get_number1() / get_number2();
     }
     double divide2_1() {
-        return num2 / num1;
-    }
-    bool set_n1() {
-        while (num1 == 0) {
-            if (num1 == 0) {
-                std::cout << "Неверный ввод" << std::endl;
-                std::cout << "Введите второе число:";
-                std::cin >> num1;
-            }
-            else { continue; }
-        }
-        return num1;
-    }
-    bool set_n2() {
-        while (num2 == 0) {
-            if (num2 == 0) {
-                std::cout << "Неверный ввод" << std::endl;
-                std::cout << "Введите второе число:";
-                std::cin >> num2;
-            }
-            else { continue; }
-        }
-        return num2;
+        return get_number1() / get_number2();
     }
 };
 
-int main()
-{
-    setlocale(LC_ALL, "Russian");
+
+int main() {
+    setlocale(LC_ALL, "rus");
     calculator create;
-    while (create.num1 >=0 && create.num2 >=0) {
-        std::cout << "Введите первое число :";
-        std::cin >> create.num1;
-        create.set_n1();
-        std::cout << "Введите второе число :";
-        std::cin >> create.num2;
-        create.set_n2();
-        std::cout << create.num1 << " + " << create.num2 << " = " << create.add() << std::endl;
-        std::cout << create.num1 << " - " << create.num2 << " = " << create.subtract1_2() << std::endl;
-        std::cout << create.num2 << " - " << create.num1 << " = " << create.subtract2_1() << std::endl;
-        std::cout << create.num1 << " * " << create.num2 << " = " << create.multiply() << std::endl;
-        std::cout << create.num1 << " / " << create.num2 << " = " << create.divide1_2() << std::endl;
-        std::cout << create.num2 << " / " << create.num1 << " = " << create.divide2_1() << std::endl;
-     };
+    double n1 = create.get_number1(); double n2 = create.get_number2();
+    while (n1 >= 0 && n2 >= 0) {
+        std::cout << "Введите первое число:";
+        std::cin >> n1;
+        while (create.set_n1(n1) == false) {
+            std::cout << "ошибка " << "\n" << "Введите первое число: ";
+            std::cin >> n1;
+            
+        }
+    
+
+        std::cout << "Введите второе число:";
+        std::cin >> n2;
+        while  (create.set_n2(n2) == false) {
+            std::cout << "Ошибка " << '\n' << "Введите второе число: ";
+            std::cin >> n2;
+        }
+     
+
+        std::cout << n1 << " + " << n2 << " = " << create.add() << '\n';
+        std::cout << n1 << " - " << n2 << " = " << create.subtract1_2() << '\n';
+        std::cout << n1 << " - " << n2 << " = " << create.subtract2_1() << '\n';
+        std::cout << n1 << " * " << n2 << " = " << create.multiply() << '\n';
+        std::cout << n1 << " / " << n2 << " = " << create.divide1_2() << '\n';
+        std::cout << n1 << " / " << n2 << " = " << create.divide2_1() << '\n';
+    }
 }
