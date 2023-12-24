@@ -2,18 +2,19 @@
 
 class calculator {
 private:
-    double num1 = 0 ; double num2 = 0;
+    double num1 = 1 ; double num2 = 1;
 public:
-  
-    double get_number1() { return num1; }
-    double get_number2() { return num2; }
+  calculator() = default;
+ // calculator (double n1, double n2) : num1(n1), num2(n2){}
+  double get_number1(){return num1; }
+  double get_number2() { return num2; }
 
     bool set_n1(double value1) {
         if (value1 == 0) {
             return false;
         }
         else {
-            value1 = num1;
+            num1 = value1;
             return true;
         }
     }
@@ -23,19 +24,19 @@ public:
             return false;
         }
         else {
-            value2 = num2;
+            num2 = value2;
             return true;
         }
     }
 
-    double add( ) {
+    double add() {
         return num1 + num2;
     }
     double subtract1_2() {
         return num1 - num2;
     }
     double subtract2_1() {
-        return num1 - num2;
+        return num2 - num1;
     }
     double multiply() {
         return num1 * num2;
@@ -44,15 +45,15 @@ public:
         return num1 / num2;
     }
     double divide2_1() {
-        return num1 / num2;
+        return num2 / num1;
     }
 };
 
 
 int main() {
-    setlocale(LC_ALL, "rus");
+    setlocale(LC_ALL, "Russian");
+    double n1 = 0.1, n2 = 0.1;
     calculator create;
-    double n1 = create.get_number1(); double n2 = create.get_number2();
     while (n1 >= 0 && n2 >= 0) {
         std::cout << "Введите первое число:";
         std::cin >> n1;
@@ -73,9 +74,9 @@ int main() {
 
         std::cout << n1 << " + " << n2 << " = " << create.add() << '\n';
         std::cout << n1 << " - " << n2 << " = " << create.subtract1_2() << '\n';
-        std::cout << n1 << " - " << n2 << " = " << create.subtract2_1() << '\n';
+        std::cout << n2 << " - " << n1 << " = " << create.subtract2_1() << '\n';
         std::cout << n1 << " * " << n2 << " = " << create.multiply() << '\n';
         std::cout << n1 << " / " << n2 << " = " << create.divide1_2() << '\n';
-        std::cout << n1 << " / " << n2 << " = " << create.divide2_1() << '\n';
+        std::cout << n2 << " / " << n1 << " = " << create.divide2_1() << '\n';
     }
 }
